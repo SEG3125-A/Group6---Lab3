@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <title>Your Grocery Store</title>
+</head>
+<body>
+    <!-- Tab links -->
+    <div class="tab">
+      <button class="tablinks" onclick="openInfo(event, 'Client')" aria-label="Client Info">Client</button>
+      <button class="tablinks" onclick="openInfo(event, 'Products')" aria-label="Products">Products</button>
+      <button class="tablinks" onclick="openInfo(event, 'Cart')" aria-label="Shopping Cart">Cart</button>
+    </div>
+
+    <!-- Tab content -->
+    <!-- Client Info -->
+    <div id="Client" class="tabcontent">
+      <h3>Client Information</h3>
+      <p>Tell us a bit about you.</p>
+      <!-- Client Form -->
+      <label for="dietSelect">Select your Dietary Preference:</label>
+      <select id="dietSelect" name="dietSelect" onchange="populateListProductChoices(this.id, 'displayProduct')">
+        <option value=""></option>
+        <option value="Vegetarian">Vegetarian</option>
+        <option value="GlutenFree">GlutenFree</option>
+        <option value="None">None</option>
+      </select>
+    </div>
+
+    <!-- Products -->
+    <div id="Products" class="tabcontent">
+      <h3>Available Products</h3>
+      <p>We preselected products based on your preferences.</p>
+      <!-- Category Filter -->
+      <div>
+        <label for="categoryFilter">Filter by Category:</label>
+        <select id="categoryFilter" onchange="filterProductsByCategory(this.value)">
+          <option value="all">All Categories</option>
+          <option value="vegetable">Vegetables</option>
+          <option value="fruit">Fruits</option>
+          <option value="dairy">Dairy</option>
+          <option value="juice">Juice</option>
+        </select>
+      </div>
+
+      <!-- Product List -->
+      <div id="displayProduct"></div>
+      <button id="addCart" type="button" class="block" onclick="selectedItems()">
+        Add selected items to cart
+      </button>
+    </div>
+
+    <!-- Cart -->
+    <div id="Cart" class="tabcontent">
+      <h3>Cart</h3>
+      <p>Your shopping cart </p>
+      <div id="displayCart"></div>
+    </div>
+
+    <script src="groceries.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
